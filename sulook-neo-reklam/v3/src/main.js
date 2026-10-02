@@ -30,11 +30,12 @@ const T = {
   layout2: 14.9, notif: 15.4, notifGap: .42, clear: 17.1,
   inter: 17.22, interOut: 18.2,
   perks: 18.4, perkGap: .36,
-  keyDark: 20.42, key: 617 / 30,       // anahtar 30 fps çıktı ızgarasına oturur: PNG n → çıktı karesi 617+n-1
+  keyDark: 20.42, key: 616.5 / 30,     // 30 fps çıktı karesi k = 60 fps alt-kareler (2k−1, 2k): PNG n tam olarak çıktı karesi 616+n
 };
 T.co = [12.3, T.led, 13.75, 13.95, 14.15];
 T.price = T.key + .26; T.strike = T.key + .7;
-T.newPrice = T.key + 34 / 30;          // anahtar animasyonunun tam 35. karesi
+T.newPrice = T.key + 34 / 30 - 1 / 60;  // yeni fiyat, anahtarın 35. karesini gösteren çıktı karesinde (651) girer
+T.accent = T.key + 34 / 30 + 1 / 60;    // o karenin ekrana geldiği an (müzikal vurgu)
 T.taksit = T.newPrice + .45;
 T.keyShrink = T.key + 81 / 30;         // anahtar kadraj kenarlarından ayrıldığı kare
 T.endLogo = T.keyShrink + .35; T.endTxt = T.keyShrink + .5;
