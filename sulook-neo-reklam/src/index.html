@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>SULOOK Neo — Reklam</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <radialGradient id="pinFill" cx="35%" cy="30%" r="80%">
+      <stop offset="0" stop-color="#6cc0ff"/>
+      <stop offset=".45" stop-color="#2a86f0"/>
+      <stop offset="1" stop-color="#1048b8"/>
+    </radialGradient>
+    <radialGradient id="coinFill" cx="35%" cy="30%" r="75%">
+      <stop offset="0" stop-color="#fff1a8"/>
+      <stop offset=".45" stop-color="#ffc93a"/>
+      <stop offset="1" stop-color="#d98a00"/>
+    </radialGradient>
+    <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2aa2f0" stop-opacity=".45"/><stop offset="1" stop-color="#2aa2f0" stop-opacity="0"/></linearGradient>
+    <symbol id="pin" viewBox="0 0 64 92">
+      <path d="M32 90 C25 77 4 64 4 37 A28 30 0 1 1 60 37 C60 64 39 77 32 90 Z" fill="url(#pinFill)" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"/>
+      <ellipse cx="22" cy="20" rx="10" ry="6" fill="#fff" opacity=".35" transform="rotate(-30 22 20)"/>
+      <circle cx="22.5" cy="34" r="7.5" fill="none" stroke="#fff" stroke-width="5"/>
+      <circle cx="41.5" cy="32" r="7.5" fill="none" stroke="#fff" stroke-width="5"/>
+      <path d="M18 47 Q31 56 46 45" fill="none" stroke="#ef3340" stroke-width="4.2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="coin" viewBox="0 0 60 60">
+      <circle cx="30" cy="30" r="28" fill="#c97c00"/>
+      <circle cx="30" cy="28" r="27" fill="url(#coinFill)"/>
+      <circle cx="30" cy="28" r="20" fill="none" stroke="#e7a100" stroke-width="2.5"/>
+      <text x="30" y="38" text-anchor="middle" font-family="Lexend" font-weight="800" font-size="27" fill="#b56e00">₺</text>
+    </symbol>
+    <symbol id="face" viewBox="0 0 64 64">
+      <circle cx="21" cy="26" r="9" fill="none" stroke="#fff" stroke-width="6"/>
+      <circle cx="43" cy="24" r="9" fill="none" stroke="#fff" stroke-width="6"/>
+      <path d="M14 42 Q31 54 50 40" fill="none" stroke="#ef3340" stroke-width="5.5" stroke-linecap="round"/>
+    </symbol>
+    <!-- line icons 24x24 -->
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6.5h11v9h-11zM13.5 9.5h4l3 3.2v2.8h-7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="6.5" cy="17.2" r="2" fill="#fff" stroke="currentColor" stroke-width="1.9"/><circle cx="17" cy="17.2" r="2" fill="#fff" stroke="currentColor" stroke-width="1.9"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.3 5.2L3.6 17.3a1.6 1.6 0 0 0 2.3 2.3l5.8-5.8a4 4 0 0 0 5.2-5.3l-2.5 2.5-2.1-.4-.4-2.1z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M12 3.2c3 3.6 5.6 6.6 5.6 9.9a5.6 5.6 0 0 1-11.2 0c0-3.3 2.6-6.3 5.6-9.9z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M9.3 13.6a2.8 2.8 0 0 0 2.7 2.4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4.5 13.5v-1.5a7.5 7.5 0 0 1 15 0v1.5" fill="none" stroke="currentColor" stroke-width="1.9"/><rect x="3.5" y="12.5" width="4" height="6" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.9"/><rect x="16.5" y="12.5" width="4" height="6" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M18.5 18.5c0 1.6-1.6 2.5-4 2.5h-1.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M5 9.5a10 10 0 0 1 14 0M7.6 12.5a6.3 6.3 0 0 1 8.8 0M10.3 15.4a2.5 2.5 0 0 1 3.4 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="18.6" r="1.4" fill="currentColor"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5.5 12.5l4.2 4.2 8.8-9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 1.5h-15z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2.5L5 13.5h6l-1 8 8-11h-6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+    <symbol id="i-nfc" viewBox="0 0 24 24"><path d="M8 7.5a6.5 6.5 0 0 1 0 9M11.5 5a10 10 0 0 1 0 14M15 3a13 13 0 0 1 0 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3c3.2 3.8 6 7 6 10.4a6 6 0 0 1-12 0C6 10 8.8 6.8 12 3z" fill="currentColor"/></symbol>
+    <symbol id="i-tank" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M5 13c2.3-1.3 4.7 1.3 7 0s4.7 1.3 7 0" fill="none" stroke="currentColor" stroke-width="1.9"/></symbol>
+    <symbol id="i-light" viewBox="0 0 24 24"><path d="M9 17.5h6M10 20.5h4M12 3.5a6 6 0 0 0-3.6 10.8c.6.5 1 1.3 1 2.2h5.2c0-.9.4-1.7 1-2.2A6 6 0 0 0 12 3.5z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+    <symbol id="i-door" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8 9h8M8 12h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.9"/></symbol>
+  </defs>
+</svg>
+
+<div id="stage">
+
+  <!-- ============ SAHNE 1 : PERDE + "ne o?" ============ -->
+  <div id="s1" class="layer">
+    <div id="s1cam" class="layer">
+      <img id="perde" class="fill" alt="">
+    </div>
+    <div id="s1grade" class="layer"></div>
+    <div id="s1light" class="layer"></div>
+    <div id="neoq">
+      <div class="q-base"><span class="w w-ne">ne</span><span class="w w-sp"></span><span class="w w-o">o</span><span class="w w-q">?</span></div>
+      <div class="q-glitch g1" aria-hidden="true"><span class="w">ne</span><span class="w w-sp"></span><span class="w">o</span><span class="w">?</span></div>
+      <div class="q-glitch g2" aria-hidden="true"><span class="w">ne</span><span class="w w-sp"></span><span class="w">o</span><span class="w">?</span></div>
+    </div>
+    <div id="s1flash" class="layer"></div>
+  </div>
+
+  <!-- ============ AÇIK DÜNYA : HARİTA + SOKAK (telefon) ============ -->
+  <div id="light" class="layer">
+    <div id="lbg" class="layer">
+      <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+      <div id="dots" class="layer"></div>
+    </div>
+
+    <div id="txt">
+      <div class="tgroup" id="tg1">
+        <div class="eyebrow"><span class="mline"><span class="in">Yeni nesil</span></span></div>
+        <div class="h1"><span class="mline"><span class="in">Otomat</span></span></div>
+        <div class="h1 grad"><span class="mline"><span class="in">İşletmeciliği.</span></span></div>
+      </div>
+      <div class="tgroup" id="tg2">
+        <div class="h2"><span class="mline"><span class="in">Şehrin her noktasından</span></span></div>
+        <div class="h1 grad"><span class="mline"><span class="in">pasif gelir.</span></span></div>
+        <div class="chip-row"><span class="tchip" id="yonet"><svg><use href="#i-bolt"/></svg>Hepsini telefonundan yönet</span></div>
+      </div>
+      <div class="tgroup" id="tg3">
+        <div class="h2"><span class="mline"><span class="in">Kendi kendine satar,</span></span></div>
+        <div class="h1 grad"><span class="mline"><span class="in">sen kazanırsın.</span></span></div>
+      </div>
+      <div class="tgroup" id="tg4">
+        <div class="h1"><span class="mline"><span class="in">Peki ürün</span></span></div><div class="h1 grad"><span class="mline"><span class="in">ne?</span></span></div>
+      </div>
+    </div>
+
+    <div id="phoneWrap">
+      <div id="phone">
+        <div class="ph-shadow"></div>
+        <div class="ph-body">
+          <div class="ph-btn b-l1"></div><div class="ph-btn b-l2"></div><div class="ph-btn b-r1"></div>
+        </div>
+        <div id="screen">
+
+          <!-- APP 1: HARİTA -->
+          <div id="appMap" class="app">
+            <div id="mapCam">
+              <img src="assets/img/harita.jpg" id="mapImg" alt="">
+              <svg id="mapPaths" width="1052" height="980"></svg>
+              <div id="mapFx"></div>
+            </div>
+            <div class="app-topfade"></div>
+            <div class="app-head">
+              <div class="ah-logo"><svg><use href="#face"/></svg></div>
+              <div class="ah-t"><b>SULOOK Ağım</b><span><i class="live"></i><em id="nOnline">5</em> nokta · canlı</span></div>
+              <div class="ah-bell"><svg><use href="#i-bell"/></svg><i id="bellBadge">1</i></div>
+            </div>
+            <div id="statCard" class="card">
+              <div class="sc-top"><i class="live"></i><b>SULOOK Ağı · Bugün</b><span class="sc-badge">1 bildirim</span></div>
+              <div class="sc-cols">
+                <div><span>Çevrimiçi</span><b><em id="stOn">5</em><small>/<em id="stOn2">5</em></small></b></div>
+                <div><span>Dolum</span><b id="stDolum">240</b></div>
+                <div><span>Ciro</span><b id="stCiro">₺6.720</b></div>
+              </div>
+              <div class="sc-note">Temsili veriler</div>
+            </div>
+            <div id="tap"><i></i><i class="r2"></i></div>
+          </div>
+
+          <!-- APP 2: SOKAK / NOKTA DETAYI -->
+          <div id="appStreet" class="app">
+            <div id="stCam">
+              <img src="assets/img/sokak.jpg" id="stImg" alt="">
+              <div id="stFx"></div>
+            </div>
+            <div class="app-topwhite"></div>
+            <div id="incCard" class="card">
+              <div class="ic-top"><i class="live"></i><b>Günlük Gelir</b><span>Nokta 03 · örnek akış</span></div>
+              <div class="ic-cols">
+                <div><span>Litre</span><b id="icLitre">840</b></div>
+                <div class="ic-sep"></div>
+                <div><span>Ciro</span><b id="icCiro">₺3.820</b></div>
+              </div>
+              <svg id="spark" viewBox="0 0 520 70" preserveAspectRatio="none"><path id="sparkFill" d=""/><path id="sparkLine" d=""/><circle id="sparkDot" r="6"/></svg>
+              <span id="icChip">↗ +₺20</span>
+            </div>
+            <div id="coinsUI"></div>
+          </div>
+
+          <!-- APP 3: CİHAZ (hero dünyası burada yaşar) -->
+          <div id="appDevice" class="app">
+            <div id="heroWrap">
+              <div id="hero">
+                <div id="hbg">
+                  <div id="hbgGrad"></div>
+                  <div id="hbgType"><span>SULOOK</span><span>NEO</span><span>SULOOK</span></div>
+                  <div id="hbgVig"></div>
+                </div>
+                <div id="hTitle">
+                  <div class="ht-k"><span class="mline"><span class="in">Akıllı Su Dolum Otomatı</span></span></div>
+                  <div class="ht-n"><span class="hn-s">SULOOK</span><span class="hn-neo"><span class="hn-a">ne o?</span><span class="hn-b">Neo.</span></span></div>
+                  <div class="ht-spec"><span><b id="gpd">1330</b> GPD <i>Arıtma</i></span><span class="sep"></span><span><b id="lt">160</b> L <i>Depo</i></span></div>
+                </div>
+                <div id="pedestal"><div class="pd-top"></div><div class="pd-front"></div></div>
+                <div id="mach">
+                  <div class="m-shadow"></div>
+                  <div id="mBottleFly"><img src="assets/img/damacana.png" alt=""></div>
+                  <img src="assets/img/neo_cut.png" id="mImg" alt="">
+                  <div id="mCavity">
+                    <div id="mCavGlow"></div>
+                    <div id="mBottleIn"><img src="assets/img/damacana.png" alt=""><div id="mFillShine"></div></div>
+                    <div id="mStream"></div>
+                    <div id="mDoor"><i></i></div>
+                  </div>
+                  <div id="mLedOff"></div>
+                  <div id="mLedWash"></div>
+                  <div id="mLedGlow"></div>
+                  <div id="mSheen"></div>
+                </div>
+                <svg id="callSvg" class="layer"></svg>
+                <div id="callouts"></div>
+                <div id="panels"></div>
+                <div id="notifs"></div>
+                <div id="perks">
+                  <div class="pk-eyebrow"><span class="mline"><span class="in">Kampanyaya özel</span></span></div>
+                  <div class="pk-list"></div>
+                </div>
+                <div id="keyScene">
+                  <img id="keyImg" alt="">
+                </div>
+                <div id="price">
+                  <div id="pKicker">Anahtar teslim</div>
+                  <div id="pOld"><span>440.000 TL<i id="pStrike"></i></span></div>
+                  <div id="pNew"><span class="pn-txt">399.900 TL</span><div id="pTag">Kısa süreliğine</div></div>
+                  <div id="pSent">ile pasif gelir sistemini başlat.</div>
+                  <div id="pTaksit"><b>%0 vade</b> ile <b>4 ay taksit</b> imkânı</div>
+                </div>
+                <div id="marquee"><div class="mq-in"></div></div>
+                <div id="endUrl"><span>su-look.com</span></div>
+                <div id="hFlash"></div>
+              </div>
+            </div>
+            <div id="devChrome">
+              <div class="dc-top"><span class="dc-back">‹</span><b>Nokta 03</b><span class="dc-on"><i class="live"></i>Çevrimiçi</span></div>
+              <div class="dc-bot"><span>Ölçüler<i>+</i></span><span>Kapasite<i>+</i></span><span>Sensörler<i>+</i></span></div>
+            </div>
+          </div>
+
+          <div id="statusBar">
+            <span class="sb-time">9:41</span>
+            <span class="sb-island"></span>
+            <span class="sb-icons">
+              <svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+              <svg viewBox="0 0 16 12"><path d="M8 11.5l2.4-2.9a3.5 3.5 0 0 0-4.8 0zM3.6 6.4a6.6 6.6 0 0 1 8.8 0l1.5-1.8a9 9 0 0 0-11.8 0zM.6 3a11 11 0 0 1 14.8 0" /></svg>
+              <svg viewBox="0 0 27 13"><rect x=".5" y=".5" width="23" height="12" rx="3.5" fill="none" stroke-width="1"/><rect x="2.5" y="2.5" width="19" height="8" rx="2"/><rect x="24.5" y="4.5" width="2" height="4" rx="1"/></svg>
+            </span>
+          </div>
+          <div id="homeInd"></div>
+          <div id="scrFlash"></div>
+        </div>
+        <div class="ph-glare"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="iris"></div>
+  <div id="vign" class="layer"></div>
+</div>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

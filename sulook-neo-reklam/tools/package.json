@@ -1,0 +1,8 @@
+{
+  "name": "sulook-neo-reklam-tools",
+  "private": true,
+  "description": "Kare kare render (Playwright) aracı",
+  "dependencies": {
+    "playwright": "^1.56.1"
+  }
+}

@@ -1,0 +1,7 @@
+node_modules/
+build/
+stills/
+.frames_*/
+src/assets/seq/
+tools/node_modules/
+tools/package-lock.json
