@@ -1,0 +1,52 @@
+/*
+ * SULOOK — Web sitesi renk paleti
+ * Kaynak: https://su-look.com/css/style.css
+ * Kontrol tarihi: 29 Eylül 2026
+ * Kaynak dosyadaki :root bloğundan alınan renk ve degrade değişkenleri.
+ * Bu dosya renk tanımlarının alt kümesidir; sitenin tam stil dosyası değildir.
+ */
+:root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --secondary: #0ea5e9;
+    --accent: #06b6d4;
+    --accent-glow: rgba(6, 182, 212, 0.5);
+
+    --red-accent: #e53935;
+    --red-dark: #c62828;
+    --red-light: rgba(229, 57, 53, 0.1);
+    --success: #22c55e;
+    --warning: #f59e0b;
+
+    --text-dark: #0f172a;
+    --text-light: #f8fafc;
+    --text-gray: #64748b;
+    --text-muted: #94a3b8;
+
+    --bg-dark: #0f172a;
+    --bg-darker: #020617;
+    --bg-light: #ffffff;
+    --bg-gray: #f8fafc;
+
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+
+    --gradient-primary: linear-gradient(135deg, #38bdf8, #06b6d4);
+    --gradient-hero: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0284c7 100%);
+    --gradient-dark: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+    --gradient-red: linear-gradient(135deg, #e53935, #c62828);
+}
+
+/* Shared interface roles. Tints are derived from the supplied palette. */
+:root {
+  --hero-deep: #0c4a6e;
+  --hero-mid: #0369a1;
+  --slate-surface: #1e293b;
+  --link-color: var(--hero-mid);
+  /* V88: a deeper logo blue, independent of the light CTA color. */
+  --logo-blue: #0284c7;
+  --brand-line: color-mix(in srgb, var(--primary-dark) 18%, white);
+  --brand-tint: color-mix(in srgb, var(--primary) 7%, white);
+  --brand-tint-strong: color-mix(in srgb, var(--primary) 14%, white);
+}
