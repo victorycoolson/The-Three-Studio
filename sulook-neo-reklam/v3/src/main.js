@@ -30,7 +30,7 @@ const T = {
   layout2: 14.9, notif: 15.4, notifGap: .42, clear: 17.1,
   inter: 17.22, interOut: 18.2,
   perks: 18.4, perkGap: .36,
-  keyDark: 20.4, key: 20.55,
+  keyDark: 20.42, key: 617 / 30,       // anahtar 30 fps çıktı ızgarasına oturur: PNG n → çıktı karesi 617+n-1
 };
 T.co = [12.3, T.led, 13.75, 13.95, 14.15];
 T.price = T.key + .26; T.strike = T.key + .7;
@@ -644,7 +644,7 @@ function updateHero(t) {
   const dv = t - T.key;
   vis(keyScene, dv >= -.05);
   if (dv >= -.05) {
-    const kf = clamp(Math.floor(Math.max(0, dv) * 30) + 1, 1, 250);
+    const kf = clamp(Math.floor(Math.max(0, dv) * 30 + 1e-4) + 1, 1, 250);
     setFrame(keyImg, 'key', `assets/seq/keypng/${String(kf).padStart(4, '0')}.webp`);
     keyCam.style.transform = `translateY(${S.key.y}px) scale(${S.key.s})`;
     const g = S.key.glow, [gx, gy] = KEYC[kf - 1];
