@@ -66,7 +66,7 @@ function shake(t) {
 }
 const GROOVE = [[32.0, 39.5]];
 function pulse(t) { if (!GROOVE.some(([a, b]) => t >= a && t < b)) return 0; const f = t % BEAT; return Math.exp(-f * 11); }
-const FLASH = [[2.0, .22], [4.0, .9], [6.0, .25], [9.8, .8], [12.5, .3], [14.0, .75], [24.0, .55], [32.0, .5], [38.0, .25]];
+const FLASH = [[4.0, .45], [9.8, .45], [32.0, .5], [38.0, .25]];   // yumuşak: yalnız açılış, sokak geçişi ve fiyat
 function flashAt(t) { let o = 0; for (const [h, a] of FLASH) { const d = t - h; if (d >= -.02 && d < .5) o = Math.max(o, a * Math.exp(-Math.max(0, d) * 9)); } return o; }
 // markanın −π/7 eğik bıçağıyla geçiş (tc anında ekranı tamamen örter)
 const WIPES = [6.0, 24.0, 29.0];
@@ -143,10 +143,11 @@ function renderPhrase(r, t) {
   r.chars.forEach((c, i) => { const d = t - (r.t0 + i * r.cs), k = E('power3.out')(clamp(d / .42)); c.style.transform = `translateY(${((1 - k) * 110).toFixed(2)}%)`; c.style.opacity = clamp(d / .16); });
 }
 // genişliğe sığdır: vurgu kelimesi hedef fontunda ölçülür
-function fitPh(r, maxW) {
-  const el = r.el; if (r.kind === 'em') setFont(r, r.final);
-  el.style.width = 'max-content'; el.style.right = 'auto';
-  const w = el.getBoundingClientRect().width; el.style.width = ''; el.style.right = '';
+function fitPh(r, maxW) {   // vurgu kelimesinde geçişteki en geniş font ölçülür
+  const el = r.el; el.style.width = 'max-content'; el.style.right = 'auto';
+  let w = 0;
+  for (const f of r.kind === 'em' ? [r.font, ...r.steps] : [null]) { if (f) { r.cur = null; setFont(r, f); } w = Math.max(w, el.getBoundingClientRect().width); }
+  el.style.width = ''; el.style.right = '';
   if (w > maxW) el.style.fontSize = (parseFloat(el.style.fontSize) * maxW / w).toFixed(1) + 'px';
   if (r.kind === 'em') { r.cur = null; setFont(r, r.font); }
 }
@@ -211,7 +212,7 @@ FILLS.forEach(f => {
   const g = document.createElementNS(SVGNS, 'g'); g.setAttribute('class', 'pk'); g.innerHTML = '<circle class="pk-halo" r="14"/><circle class="pk-dot" r="6"/>'; packetLayer.appendChild(g); f.g = g;
   const e = document.createElement('div'); e.className = 'earn'; e.innerHTML = `<i>₺</i>+₺${f.a}`; markers.appendChild(e); f.earn = e;
 });
-S.map = { fx: HUB[0], fy: HUB[1], z: 1.7 };
+S.map = { fx: HUB[0], fy: HUB[1], z: 1.25 };
 tl.to(S.map, { fx: 780, fy: 470, z: .84, duration: 1.9, ease: 'power3.out' }, T.map);
 tl.to(S.map, { fx: 860, fy: 460, z: .9, duration: T.tap - T.map - 1.9, ease: 'sine.inOut' }, T.map + 1.9);
 tl.to(S.map, { fx: PTS[0].x, fy: PTS[0].y - 40, z: 5.2, duration: T.zoomEnd - T.zoom, ease: 'power4.in' }, T.zoom);
