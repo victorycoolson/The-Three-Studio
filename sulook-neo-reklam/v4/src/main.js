@@ -430,12 +430,13 @@ function track(name, n) {
 }
 
 // --- zeminler ve genel katmanlar
-const NAVY_ON = [[0, T.reveal], [T.c724, T.mach + .1], [T.recap, 1e9]], BLUE_ON = [[T.reveal, T.map], [T.mach - .2, T.offer]], LIGHT_ON = [[T.map, T.c724]];
+const NAVY_ON = [[0, T.reveal], [T.c724, T.mach + .1], [T.recap, 1e9]], BLUE_ON = [[T.reveal, T.map], [T.mach - .2, T.offer]], LIGHT_ON = [[T.map, T.c724 + .3]];
 const anyOn = (R, t) => R.some(([a, b]) => t >= a && t < b);
 function updateBg(t) {
   vis($('#bgNavy'), anyOn(NAVY_ON, t)); vis($('#bgBlue'), anyOn(BLUE_ON, t)); vis($('#bgLight'), anyOn(LIGHT_ON, t));
   $('#bgBlue').style.opacity = t < T.map ? 1 : E('power2.inOut')(prog(t, T.mach - .2, T.mach + .1));
   vis($('#light'), anyOn(LIGHT_ON, t));
+  { const xf = 1 - E('power2.inOut')(prog(t, T.c724 - .05, T.c724 + .3)); $('#light').style.opacity = xf; $('#bgLight').style.opacity = xf; }   // sokak → 7/24 yumuşak geçiş
   const [sx, sy] = shake(t), pz = 1 + .014 * pulse(t);
   world.style.transform = `translate(${sx * .6}px,${sy * .6}px) scale(${pz})`;
   $('#flash').style.opacity = flashAt(t);
@@ -608,7 +609,7 @@ function updateMap(t) {
 }
 let rvTarget = [440, 225];
 function updateStreet(t) {
-  const on = inR(t, T.street - .05, T.c724); vis(appStreet, on); if (!on || !street) return;
+  const on = inR(t, T.street - .05, T.c724 + .3); vis(appStreet, on); if (!on || !street) return;
   const u = (t - T.street) * ST_SPEED, s = S.st;
   const cam = { fx: s.fx, fy: s.fy, z: s.z, sx: 300, sy: 570 };
   street.draw(stCtx, u, cam, 2);
