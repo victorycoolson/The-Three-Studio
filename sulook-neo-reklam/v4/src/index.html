@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>SULOOK Neo — Reklam V4</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#38bdf8" stop-opacity=".25"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></linearGradient>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6.5h11v9h-11zM13.5 9.5h4l3 3.2v2.8h-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="6.5" cy="17.2" r="2" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17" cy="17.2" r="2" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.3 5.2L3.6 17.3a1.6 1.6 0 0 0 2.3 2.3l5.8-5.8a4 4 0 0 0 5.2-5.3l-2.5 2.5-2.1-.4-.4-2.1z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M12 3.2c3 3.6 5.6 6.6 5.6 9.9a5.6 5.6 0 0 1-11.2 0c0-3.3 2.6-6.3 5.6-9.9z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9.3 13.6a2.8 2.8 0 0 0 2.7 2.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4.5 13.5v-1.5a7.5 7.5 0 0 1 15 0v1.5" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="3.5" y="12.5" width="4" height="6" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="16.5" y="12.5" width="4" height="6" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M18.5 18.5c0 1.6-1.6 2.5-4 2.5h-1.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M5 9.5a10 10 0 0 1 14 0M7.6 12.5a6.3 6.3 0 0 1 8.8 0M10.3 15.4a2.5 2.5 0 0 1 3.4 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="18.6" r="1.4" fill="currentColor"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5.5 12.5l4.2 4.2 8.8-9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2.5L5 13.5h6l-1 8 8-11h-6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-tank" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M5 13c2.3-1.3 4.7 1.3 7 0s4.7 1.3 7 0" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-light" viewBox="0 0 24 24"><path d="M9 17.5h6M10 20.5h4M12 3.5a6 6 0 0 0-3.6 10.8c.6.5 1 1.3 1 2.2h5.2c0-.9.4-1.7 1-2.2A6 6 0 0 0 12 3.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-door" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8 9h8M8 12h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M8.5 7.5a6 6 0 0 1 0 9M12 5a9.5 9.5 0 0 1 0 14M15.5 2.5a13 13 0 0 1 0 19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<div id="stage">
+ <div id="world">
+
+  <!-- zeminler -->
+  <div id="bgNavy" class="layer"></div>
+  <div id="bgBlue" class="layer"></div>
+  <div id="bgLight" class="layer"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div id="dots" class="layer"></div></div>
+  <canvas id="wmCanvas" width="1080" height="1920"></canvas>
+  <canvas id="motes" width="1080" height="1920"></canvas>
+
+  <!-- perde -->
+  <div id="sPerde" class="layer"><img id="perde" class="fill" alt=""><div id="perdeGrade" class="layer"></div></div>
+
+  <!-- ürün arkası dev yazı -->
+  <div id="bigTxt"></div>
+
+  <!-- ürün -->
+  <div id="prodCam">
+    <div id="prodAura"></div>
+    <img id="prodImg" alt="">
+    <div id="ledWash"></div>
+    <div id="ledOff"></div>
+    <div id="ledGlow"></div>
+  </div>
+  <div id="ledDim" class="layer"></div>
+  <svg id="tapSvg" viewBox="0 0 1080 1920"></svg>
+  <div id="cardFly"><svg><use href="#i-card"/></svg></div>
+  <div id="mLabel"><b></b><span class="st"></span></div>
+
+  <!-- telefon (harita + sokak) -->
+  <div id="light" class="layer">
+    <div id="phoneWrap">
+      <div id="phone">
+        <div class="ph-shadow"></div>
+        <div class="ph-body"><div class="ph-btn b-l1"></div><div class="ph-btn b-l2"></div><div class="ph-btn b-r1"></div></div>
+        <div id="screen">
+
+          <!-- harita -->
+          <div id="appMap" class="app">
+            <div id="mapCam">
+              <img src="assets/site/city-map-v27.png" id="mapImg" alt="">
+              <svg id="mapLinks" width="1672" height="941" viewBox="0 0 1672 941"><g id="linkLayer"></g><g id="packetLayer"></g></svg>
+            </div>
+            <div id="mapMarkers"></div>
+            <div class="net-phone-bar"><strong>SULOOK Ağı</strong><span><i class="live"></i><em id="nOnline">5</em>&nbsp;nokta çevrimiçi</span></div>
+            <div id="netPanel">
+              <div class="np-head"><i class="live"></i>SULOOK Ağı · Bugün<span class="np-alert" id="npAlert">1 bildirim</span></div>
+              <div class="np-stats">
+                <div><p>Çevrimiçi</p><strong><em id="npOn">5</em><small>/<em id="npTot">5</em></small></strong></div>
+                <div><p>Dolum</p><strong id="npFills">216</strong></div>
+                <div><p>Ciro</p><strong><span>₺</span><em id="npIncome">6.000</em></strong></div>
+              </div>
+              <div class="np-note">Örnek akış</div>
+            </div>
+            <div id="tap"><i></i><i class="r2"></i></div>
+          </div>
+
+          <!-- sokak -->
+          <div id="appStreet" class="app">
+            <canvas id="streetCanvas" width="600" height="1300"></canvas>
+            <div class="st-topfade"></div>
+            <aside id="revPanel">
+              <div class="rv-head"><i class="live"></i><span>Günlük Gelir</span><span class="rv-cap">Nokta 01 · örnek akış</span></div>
+              <div class="rv-stats">
+                <div class="rv-m"><p>Litre</p><div class="rv-row"><output id="rvLitre">840</output><svg class="rv-drop" viewBox="0 0 24 32"><path d="M12 2C9.2 6.3 3 13.1 3 20a9 9 0 0 0 18 0C21 13.1 14.8 6.3 12 2Z" fill="#7dd3fc" stroke="#0284c7" stroke-width="1.1"/><path d="M7 19c-.6 3 1 5.2 3.2 6" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/></svg></div></div>
+                <div class="rv-m"><p>Ciro</p><p class="rv-num"><span>₺</span><output id="rvCiro">3.820</output></p><div class="rv-trend"><svg viewBox="0 0 12 12"><path d="M2 9 9 2M3 2h6v6"/></svg><span id="rvLast">Canlı akış</span></div></div>
+              </div>
+              <svg class="rv-chart" viewBox="0 0 272 38" preserveAspectRatio="none"><path id="rvFill" d=""/><path id="rvLine" d=""/><circle id="rvDot" r="2.4"/></svg>
+            </aside>
+            <canvas id="coinCanvas" width="600" height="1300"></canvas>
+          </div>
+
+          <div id="appDevice" class="app"></div>
+          <div id="statusBar"><span class="sb-time">9:41</span><span class="sb-island"></span>
+            <span class="sb-icons"><svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 16 12"><path d="M8 11.5l2.4-2.9a3.5 3.5 0 0 0-4.8 0zM3.6 6.4a6.6 6.6 0 0 1 8.8 0l1.5-1.8a9 9 0 0 0-11.8 0zM.6 3a11 11 0 0 1 14.8 0"/></svg><svg viewBox="0 0 27 13"><rect x=".5" y=".5" width="23" height="12" rx="3.5" fill="none" stroke-width="1"/><rect x="2.5" y="2.5" width="19" height="8" rx="2"/><rect x="24.5" y="4.5" width="2" height="4" rx="1"/></svg></span></div>
+          <div id="homeInd"></div>
+          <div id="scrFlash"></div>
+        </div>
+        <div class="ph-glare"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- panel + bildirimler -->
+  <div id="panels"></div>
+  <div id="notifs"></div>
+
+  <!-- 7/24 -->
+  <div id="inter">
+    <div id="iRing">
+      <svg viewBox="0 0 640 640"><defs><linearGradient id="iGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bae6fd"/><stop offset="1" stop-color="#38bdf8"/></linearGradient></defs>
+        <g id="iTicks"></g>
+        <circle class="i-base" cx="320" cy="320" r="270"/>
+        <circle id="iArc" cx="320" cy="320" r="270" transform="rotate(-90 320 320)"/>
+        <circle id="iHead" cx="320" cy="50" r="13"/>
+      </svg>
+      <div id="iNum">7/24</div>
+      <div id="iCap">KESİNTİSİZ SATIŞ</div>
+    </div>
+  </div>
+
+  <!-- kampanya kartları -->
+  <div id="perkSlam"></div>
+  <div id="recap"><div class="pk-list"></div></div>
+
+  <!-- anahtar -->
+  <div id="keyScene">
+    <div id="keyCam"><div id="keyGlow"></div><img id="keyImg" alt=""></div>
+    <div id="keyShade"></div>
+  </div>
+
+  <!-- fiyat + son kart -->
+  <img id="endLogo" src="assets/img/logo-neo-white.png" alt="">
+  <div id="price">
+    <div id="pKicker">ANAHTAR TESLİM</div>
+    <div id="pOld"><span>440.000 TL<i id="pStrike"></i></span></div>
+    <div id="pNew"><span class="pn-txt">399.900<small>TL</small></span><div id="pTag">Kısa süreliğine</div></div>
+    <div id="pSent">ile pasif gelir sistemini başlat.</div>
+    <div id="pTak1">%0 VADE</div>
+    <div id="pTak2">4 AY TAKSİT</div>
+    <div id="pTaksit"><b>%0 vade</b> ile <b>4 ay taksit</b> imkânı</div>
+  </div>
+  <div id="marquee"><div class="mq-in"></div></div>
+  <div id="endUrl">su-look.com</div>
+
+  <!-- tipografi katmanı -->
+  <div id="type"></div>
+  <div id="note">Temsili örnek veridir.</div>
+ </div>
+
+ <div id="wipeA" class="wipe"></div><div id="wipeB" class="wipe"></div>
+ <div id="flash" class="layer"></div>
+ <div id="grain" class="layer"></div>
+</div>
+
+<script src="vendor/gsap.min.js"></script>
+<script type="module" src="main.js"></script>
+</body>
+</html>
