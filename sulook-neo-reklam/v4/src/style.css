@@ -2,6 +2,8 @@
 @font-face{font-family:'Outfit';font-style:normal;font-weight:100 900;src:url(fonts/outfit-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 /* Outfit'te ₺ yok: yalnızca ₺ için Lexend */
 @font-face{font-family:'TL';font-style:normal;font-weight:100 900;src:url(fonts/lexend-latin-ext.woff2) format('woff2');unicode-range:U+20BA}
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;src:url(fonts/instrument-serif-latin-ext-400-italic.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;src:url(fonts/instrument-serif-latin-400-italic.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Lemon Milk';font-weight:700;src:url(assets/site/lemon-milk-bold.otf)}
 
 :root{
@@ -320,3 +322,41 @@ em{font-style:normal}
 #iNum{font-family:'Lemon Milk',sans-serif;font-weight:700;font-size:170px;letter-spacing:-.02em;top:212px}
 #iCap{font-family:'Lemon Milk',sans-serif;font-weight:700;font-size:28px;letter-spacing:.24em;top:440px}
 #inter{opacity:1;visibility:hidden}
+
+/* ================= V4.1: V3 ürün tanıtımı + yumuşak tipografi ================= */
+#hTitle{position:absolute;left:0;right:0;text-align:center;color:#fff}
+.ht-n{display:flex;justify-content:center;align-items:baseline;gap:22px;font-size:136px;line-height:1.05;letter-spacing:-.06em}
+.hn-s{font-weight:700;letter-spacing:-.045em}
+.hn-neo{font-weight:400;color:#7dd3fc}
+.ht-spec{display:flex;justify-content:center;align-items:center;gap:30px;font-size:44px;font-weight:500;margin-top:16px;letter-spacing:-.02em}
+.ht-spec b{font-weight:500;font-variant-numeric:tabular-nums}
+.ht-spec i{font-style:normal;font-weight:300;color:rgba(255,255,255,.85);margin-left:6px}
+.ht-spec .sep{width:2px;height:52px;background:rgba(255,255,255,.3)}
+#callSvg{position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none}
+#callSvg path{fill:none;stroke:rgba(205,238,255,.9);stroke-width:2.5}
+#callSvg circle.ad{fill:#fff;filter:drop-shadow(0 0 6px rgba(125,211,252,.9))}
+#callSvg circle.ar{fill:none;stroke:rgba(205,238,255,.75);stroke-width:2.5}
+/* site "signal-tag" dili: ince çerçeve, koyu mavi cam, hap biçimi */
+.tag{position:absolute;display:flex;align-items:center;gap:14px;padding:12px 24px 12px 12px;white-space:nowrap;border-radius:999px;border:1.5px solid rgba(184,232,255,.4);
+  background:rgba(6,59,119,.62);backdrop-filter:blur(14px);box-shadow:0 10px 34px rgba(0,20,60,.3);color:#d5efff}
+.tag .ci{width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.1);border:1.5px solid rgba(184,232,255,.35);color:#9ce8ff;display:grid;place-items:center;flex:0 0 auto}
+.tag .ci svg{width:32px;height:32px}
+.tag .ctx b{display:block;font-size:34px;font-weight:500;letter-spacing:-.02em;color:#fff;line-height:1.1}
+.tag .ctx small{display:block;font-size:23px;font-weight:400;color:#b5d9f6;margin-top:3px}
+.tag .st{font-size:21px;font-weight:600;padding:5px 13px;border-radius:999px;background:#68dec4;color:#06567b;margin-left:2px}
+.tag .st.off{background:rgba(255,255,255,.16);color:rgba(255,255,255,.88)}
+#ytext{position:absolute;left:0;right:0;text-align:center;font-weight:400;font-size:76px;letter-spacing:-.05em;color:#fff;pointer-events:none}
+#ytext,#hTitle{visibility:hidden}
+/* anlatım satırları: kelime kelime maskeli yükseliş */
+.ph{position:absolute;left:0;right:0;text-align:center;white-space:nowrap;visibility:hidden;pointer-events:none;line-height:1.08}
+.ph .wd{display:inline-block;overflow:hidden;vertical-align:top;padding:.14em .07em .2em;margin:-.14em -.07em -.2em}
+.ph .in{display:inline-block;will-change:transform}
+.ph .c{display:inline-block}
+.ph .sp{display:inline-block;width:.26em}
+.f-o3{font-family:'TL','Outfit',sans-serif;font-weight:300;letter-spacing:-.035em}
+.f-o4{font-family:'TL','Outfit',sans-serif;font-weight:400;letter-spacing:-.035em}
+.f-o5{font-family:'TL','Outfit',sans-serif;font-weight:500;letter-spacing:-.035em}
+.f-o8{font-family:'TL','Outfit',sans-serif;font-weight:800;letter-spacing:-.04em}
+.f-serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+.f-lm{font-family:'Lemon Milk',sans-serif;font-weight:700;letter-spacing:-.01em}
+.sh2{text-shadow:0 10px 34px rgba(0,10,40,.4)}

@@ -1,6 +1,6 @@
-# SULOOK Neo — Reklam V4 (dikey 9:16, 40 sn)
+# SULOOK Neo — Reklam V4.1 (dikey 9:16, 40 sn)
 
-**Çıktı:** `../output/SULOOK_Neo_Reklam_V4_9x16.mp4` — 1080×1920, 30 fps (60 fps render + hareket bulanıklığı), H.264, AAC, −14 LUFS, 40 sn.
+**Çıktı:** `../output/SULOOK_Neo_Reklam_V4.1_9x16.mp4` (önceki sürüm: `SULOOK_Neo_Reklam_V4_9x16.mp4`) — 1080×1920, 30 fps (60 fps render + hareket bulanıklığı), H.264, AAC, −14 LUFS, 40 sn.
 
 V3 ile aynı veri ve görseller (kampanya renderı, şeffaf anahtar animasyonu, perde videosu, site haritası/sokak sahnesi), **farklı kurgu**: 120 BPM, her kesme bir vuruşa oturur; büyük tipografi Lemon Milk (sitenin filigran yazı tipi), geçişler markanın −π/7 eğik bıçağıyla.
 
@@ -27,3 +27,14 @@ Gelir/panel rakamlarının göründüğü sahnelerde "Temsili örnek veridir." n
 node tools/render.mjs --stills 4.3,15.3,32.05   # tek kare önizleme
 ```
 Zamanlama `src/main.js` içindeki `T` nesnesinde; kadrajlar `SHOTS`, ürünün arkasındaki dev yazılar `BIG` dizisinde.
+
+## V4.1 revizesi
+- Vuran (scale + blur) yazı girişleri kaldırıldı: anlatım satırları kelime kelime maskenin altından yumuşakça yükselir (Outfit).
+- Vurgu kelimeleri harf harf yazılır, ardından kısa bir font geçişiyle (Instrument Serif italik → Outfit 800 → hedef) Lemon Milk ya da serif italiğe oturur; geçişte üç küçük tık, oturuşta yumuşak pop.
+- Ritimle zoom ve ekran sarsıntısı kapatıldı; yalnızca fiyat sahnesinden itibaren geri gelir.
+- Açılış alt yazısı: **"Akıllı su dolum otomatı"**.
+- 14–20 sn: V3'ün ürün tanıtımı (Yenilenen yüzüyle SULOOK Neo., 1330 GPD · 160 L, LED / GPD / kartlı ödeme / dolum kabini / depo etiketleri).
+- Kampanya kartları vuruş başına kesme yerine yumuşak kayan karusel.
+- "Peki tüm bunlar kaça?" yerine **"Lansman özel fiyatı ile"**.
+- Anahtar animasyonu önce akmaya başlar, opaklığı akarken açılır (0,65 sn). Outro değiştirilmedi.
+- Ek yazı tipi: Instrument Serif Italic (SIL OFL, `src/fonts/InstrumentSerif-OFL.txt`).

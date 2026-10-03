@@ -1,4 +1,4 @@
-"""SULOOK Neo reklamı V4 — 120 BPM kinetik kurgu için ses tasarımı (müzik yatağı + SFX), tamamen sentez.
+"""SULOOK Neo reklamı V4.1 — 120 BPM kurgu için ses tasarımı (müzik yatağı + SFX), tamamen sentez.
 Kullanım: python3 tools/audio_v4.py tools/cues.json out_dir
 Çıktı: music.wav, sfx.wav, mix.wav (48 kHz stereo)
 """
@@ -266,57 +266,66 @@ for k, n in enumerate([523.3, 659.3, 784.0, 1046.5, 784.0, 659.3, 880.0, 1046.5,
     music.add(pluck(n, .8, 3000), T['endK'] + k * beat / 2, .2, pan=-.3 if k % 2 else .3)
 music.add(stab([174.6, 349.2, 440.0, 523.3], 1.4, .45, 2600), 39.5, 1.0)
 
-# ---------------------------------------------------------- SFX
+# ---------------------------------------------------------- SFX (V4.1: yumuşak tipografi, sert vuruşlar yalnız fiyatta)
+POPS = cues.get('POPS', [])
+def soft_in(t0, g=.22): sfx.add(whoosh(.36, 700, 4200, .75), t0 - .12, g)
+# vurgu kelimesi: font geçişinde üç küçük tık, yerine oturunca yumuşak pop + çan
+for p in POPS:
+    if p['k'] == 'shuffle':
+        for j in range(int(p['a'])): sfx.add(tick(.11, 2400 + 450 * j), p['t'] + j * .07, .5, pan=(j - 1) * .2)
+    elif p['k'] == 'land':
+        sfx.add(soft_pop(620, .32), p['t'], .6); sfx.add(pluck(1318.5, .45, 4200), p['t'] + .01, .22)
 sfx.add(lock_click(.8), .02, 1.0); sfx.add(jingle(1.0), .12, .5, pan=.2)
-for k, ts in enumerate([T['sBu'], T['sNeyi'], T['sAciyor']]):
-    sfx.add(impact(.9, .6 + .2 * k), ts, .75); sfx.add(stab([87.31 * 2 ** (k / 12 * 3), 174.6 * 2 ** (k / 12 * 3)], .3, .35, 1800), ts, .6)
-sfx.add(whoosh(.35, 6000, 300, .7), T['perde'] - .2, .7)
-for ts in (T['p1'], T['p2']): sfx.add(impact(.7, .55), ts, .6)
-sfx.add(impact(1.2, .9), T['p3'], .8); sfx.add(whoosh(.5, 300, 8000, .9), T['reveal'] - .45, .9)
-sfx.add(impact(2.2, 1.3), T['reveal'], 1.0); sfx.add(subdrop(1.4), T['reveal'], .8); sfx.add(shimmer(1.4, .14), T['reveal'] + .1, .6)
-sfx.add(whoosh(.3, 600, 5000, .7), T['rSub'] - .08, .4)
-# harita: bıçak geçişi, nokta düşüşleri, yumuşak sikkeler
-sfx.add(swish(.3), T['map'] - .15, .9)
+for ts in (T['hook1'], T['hook2'], T['hook3']): soft_in(ts)
+sfx.add(whoosh(.5, 3000, 300, .6), T['perde'] - .15, .45)
+for ts in (T['p1'], T['p2'], T['p3']): soft_in(ts, .25)
+sfx.add(whoosh(.55, 300, 7000, .9), T['reveal'] - .45, .7)
+sfx.add(impact(1.8, .9), T['reveal'], .75); sfx.add(subdrop(1.2), T['reveal'], .55); sfx.add(shimmer(1.4, .14), T['reveal'] + .1, .6)
+soft_in(T['reveal'] + .12); soft_in(T['rSub']); soft_in(T['rSub'] + .25)
+# harita
+sfx.add(swish(.3), T['map'] - .15, .7)
 for i in range(7): sfx.add(soft_pop(420 + 40 * i, .4), T['map'] + .15 + i * .25 + .14, .7, pan=((i * 37) % 9 - 4) / 8)
 for i, f in enumerate([7.0, 7.25, 7.5, 7.75, 8.0, 8.3, 8.55, 8.8, 9.05]):
     sfx.add(soft_coin(.13, [1318.5, 1174.7, 1396.9][i % 3]), f + .95, .8, pan=((i * 37) % 9 - 4) / 8)
-sfx.add(impact(.8, .6), T['mT2'], .6)
-sfx.add(whoosh(.6, 4000, 300, .6), T['pull'], .6)
-for k in range(3): sfx.add(blip(1300 + 200 * k, .22), T['mT3'] + k * .25, .55)
+for ts in (T['mT1'], T['mT2'], T['mT3'], T['mT3'] + .15, T['mT3'] + .3): soft_in(ts, .18)
+sfx.add(whoosh(.6, 4000, 300, .6), T['pull'], .55)
 sfx.add(click(2000, .03, .45), T['tap'], 1.0); sfx.add(thud(220, .15, .35), T['tap'], .6)
-sfx.add(whoosh(.55, 200, 9000, .9), T['zoom'] - .05, .9)
+sfx.add(whoosh(.55, 200, 9000, .9), T['zoom'] - .05, .85)
 # sokak (1,45× hız): ödemeler, sikkeler
 for pay, n in ((T['street'] + .40 / 1.45, 10), (T['street'] + 2.80 / 1.45, 4)):
     sfx.add(beep(1760, .08, .22), pay - .02, .8); sfx.add(beep(2349, .1, .18), pay + .07, .8)
     for i in range(n):
         if i % 2 == 0: sfx.add(soft_coin(.07, 1567.98 if i % 4 == 0 else 1318.5), pay + (.05 + i * .06 + .8) / 1.45, .8, pan=.15)
-sfx.add(impact(.8, .6), T['sT2'], .6)
+for ts in (T['sT1'], T['sT2'], T['sT2'] + .15): soft_in(ts, .18)
 # 7/24
-sfx.add(impact(1.0, .7), T['c724'], .7); sfx.add(shimmer(1.2, .13), T['c724'] + .5, .6)
-# makine montajı: her vuruşta etiket vuruşu
-sfx.add(impact(2.0, 1.15), T['mach'], 1.0); sfx.add(subdrop(1.2), T['mach'], .7)
-sfx.add(whoosh(.55, 250, 3500, .85), T['mach'] + .2, .7); sfx.add(thud(160, .4, .8), T['mach'] + .78, .8); sfx.add(glug(.9), T['mach'] + .85, .5)
-for k, ts in enumerate([T['gpd'], T['depo'], T['kabin'], T['led'], T['kart']]):
-    sfx.add(stab(CH[k % 4][1], .28, .42), ts, .8, pan=(-.2, .2)[k % 2]); sfx.add(swish(.18), ts - .09, .6)
-for k in range(10): sfx.add(tick(.12, 3000 + 300 * k), T['gpd'] + k * .04, .5)
-sfx.add(slide(.36), T['kabin'] + .05, .6); sfx.add(thud(260, .15, .35), T['kabin'] + .5, .5)
-for ts, on in [(T['led'], 0), (T['led'] + .25, 1), (T['led'] + .5, 0), (T['led'] + .75, 1)]:
-    sfx.add(click(2400 if on else 1300, .035, .45), ts, .8); sfx.add(thud(90 if not on else 140, .2, .3), ts, .5)
-sfx.add(whoosh(.3, 3000, 900, .7), T['kart'] + .02, .5); sfx.add(beep(1760, .08, .22), T['kart'] + .3, .9); sfx.add(beep(2349, .1, .2), T['kart'] + .4, .9)
+sfx.add(whoosh(.5, 400, 5000, .8), T['c724'] - .15, .55); sfx.add(shimmer(1.2, .13), T['c724'] + .4, .6)
+for i in range(12):
+    k = i / 11; sfx.add(click(2600 + 400 * k, .02, .16), T['c724'] + .05 + .55 * (.5 - .5 * np.cos(np.pi * k)), .5, pan=np.sin(k * 2 * np.pi) * .5)
+soft_in(T['c724b'], .2)
+# ürün tanıtımı (V3): kapak açılır, damacana girer, kapak kapanır, etiketler
+sfx.add(whoosh(.6, 300, 4000, .7), T['mach'] - .25, .5); sfx.add(shimmer(1.4, .14), T['title'], .65)
+sfx.add(slide(.32), T['mach'] + .05, .55); sfx.add(click(1500, .03, .25), 14.38, .45)
+sfx.add(whoosh(.5, 250, 3500, .85), 14.4, .7); sfx.add(thud(160, .4, .8), 14.88, .8); sfx.add(glug(1.0), 14.95, .5)
+sfx.add(slide(.36), 15.78, .55); sfx.add(thud(260, .15, .35), 16.28, .5)
+for ts, on in [(T['led'] + .12, 0), (T['led'] + .28, 1), (T['led'] + .44, 0), (T['led'] + .6, 1)]:
+    sfx.add(click(2400 if on else 1300, .035, .35), ts, .7)
+for k, ct in enumerate(T['co']): sfx.add(blip(1100 + 140 * k, .2), ct + .2, .6, pan=-.4 if k < 2 else .4)
+sfx.add(whoosh(.45, 3000, 600, .5), T['coOut'], .4)
 for k in range(3): sfx.add(blip(1600 + 200 * k, .16), T['dash'] + .5 + k * .5, .6, pan=.4)
 for k in range(3): sfx.add(notif_sound(), T['notif'] + k * T['notifGap'], .5, pan=(k - 1) * .2)
-sfx.add(whoosh(.45, 3000, 300, .5), T['dashOut'], .6)
-# kampanya
-sfx.add(swish(.3), T['offer'] - .15, .9); sfx.add(impact(1.2, .9), T['offer'], .85)
+sfx.add(whoosh(.45, 3000, 300, .5), T['dashOut'], .55)
+# kampanya: kayan kartlar
+sfx.add(swish(.3), T['offer'] - .15, .7); soft_in(T['offer'] + .05, .2)
 for k in range(5):
     t0 = T['perk0'] + k * T['perkGap']
-    sfx.add(stab([f * 2 ** (k / 12 * 2) for f in (349.2, 440.0, 523.3)], .25, .38), t0, .7, pan=(-.25, .25)[k % 2])
-    sfx.add(ding(1047 * 2 ** (k / 12 * 2), .4, .22), t0 + .16, .55); sfx.add(swish(.16), t0 - .07, .5)
-for k in range(5): sfx.add(click(2400, .02, .25), T['recap'] + .17 + k * .1, .6); sfx.add(ding(1568 * 2 ** (k / 12 * 2), .3, .1), T['recap'] + .17 + k * .1, .5)
-# soru → fiyat
-sfx.add(swish(.3), T['ask'] - .15, .9)
-for k, ts in enumerate([T['ask'], T['ask2']]): sfx.add(impact(.9, .7), ts, .75)
-sfx.add(impact(1.6, 1.1), T['ask3'], .9); sfx.add(subdrop(1.0, 90, 36), T['ask3'], .7)
+    sfx.add(whoosh(.4, 500, 3500, .55), t0 - .22, .45, pan=.3)
+    sfx.add(ding(1047 * 2 ** (k / 12 * 2), .4, .2), t0 + .18, .55)
+sfx.add(whoosh(.4, 500, 3500, .55), T['recap'] - .22, .4)
+for k in range(5): sfx.add(click(2400, .02, .22), T['recap'] + .05 + k * .1 + .15, .55); sfx.add(ding(1568 * 2 ** (k / 12 * 2), .3, .09), T['recap'] + .2 + k * .1, .5)
+# "Lansman özel fiyatı ile" → fiyat (vuruş ve sarsıntı burada geri gelir)
+sfx.add(swish(.3), T['ask'] - .15, .7)
+for ts in (T['ask'] + .05, T['ask'] + .4, T['ask'] + 1.05): soft_in(ts, .22)
+sfx.add(subdrop(1.0, 90, 36), T['ask'] + 1.0, .45)
 sfx.add(whoosh(.6, 200, 6000, .8), T['key'] - .05, .75); sfx.add(jingle(1.2), T['key'] + .3, .6, pan=.15)
 sfx.add(impact(1.1, .8), T['price'], .85)
 sfx.add(swish(.22), T['strike'] - .02, 1.0); sfx.add(thud(110, .3, .55), T['strike'] + .16, .6)
